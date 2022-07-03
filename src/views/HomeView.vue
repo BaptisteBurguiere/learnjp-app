@@ -9,9 +9,9 @@
     </header>
     
     <div class="flex flex-col text-center flex-grow justify-evenly items-center my-10 w-[80%] max-w-[1024px]">
-      <RouterLink to="/" class="text-4xl lg:text-5xl font-poppins font-bold bg-dark-secondary-back p-10 rounded-[1.25rem] max-w-[700px] w-full">Kanji</RouterLink>
-      <RouterLink to="/" class="text-4xl lg:text-5xl font-poppins font-bold bg-dark-secondary-back p-10 rounded-[1.25rem] max-w-[700px] w-full">Exressions</RouterLink>
-      <RouterLink to="/" class="text-4xl lg:text-5xl font-poppins font-bold bg-dark-secondary-back p-10 rounded-[1.25rem] max-w-[700px] w-full">Custom</RouterLink>
+      <RouterLink to="/" class="text-4xl lg:text-5xl font-poppins font-bold bg-dark-secondary-back p-10 rounded-[1.25rem] max-w-[700px] w-full hover:brightness-110 hover:scale-110 focus:brightness-110 focus:scale-110 focus:outline-none transition ease-in-out">Kanji</RouterLink>
+      <RouterLink to="/" class="text-4xl lg:text-5xl font-poppins font-bold bg-dark-secondary-back p-10 rounded-[1.25rem] max-w-[700px] w-full hover:brightness-110 hover:scale-110 focus:brightness-110 focus:scale-110 focus:outline-none transition ease-in-out">Exressions</RouterLink>
+      <RouterLink to="/" class="text-4xl lg:text-5xl font-poppins font-bold bg-dark-secondary-back p-10 rounded-[1.25rem] max-w-[700px] w-full hover:brightness-110 hover:scale-110 focus:brightness-110 focus:scale-110 focus:outline-none transition ease-in-out">Custom</RouterLink>
     </div>
     
   </div>
