@@ -8,12 +8,14 @@
       </div>
     </header>
     
-    <main class="flex flex-col text-center flex-grow justify-evenly items-center my-10 w-[80%] max-w-[1024px]">
+    <main class="flex flex-col text-center flex-grow justify-evenly items-center mb-20 w-[80%] max-w-[1024px]">
       <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Kanji</RouterLink>
       <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Exressions</RouterLink>
       <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Custom</RouterLink>
-    </main>
     
+      <ThemeToggle />
+    </main>
+
   </div>
   <RouterView />
 </template>
@@ -21,6 +23,7 @@
 <script>
   import { RouterLink, RouterView } from 'vue-router'
   import { useThemeStore } from '@/stores/theme.js'
+  import ThemeToggle from '@/components/ThemeToggle.vue'
 
   export default {
     data() {
@@ -43,6 +46,9 @@
           this.isLight = false
         }
       }
+    },
+    components: {
+      ThemeToggle
     }
   }
 </script>
@@ -54,22 +60,19 @@
   .container-theme-light {
     @apply bg-light-back text-light-main-font;
   }
-
   .line-theme-dark {
     @apply bg-dark-accent;
   }
   .line-theme-light {
     @apply bg-light-accent;
   }
-
   .button-theme-dark {
-    @apply bg-dark-secondary-back;
+    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110  focus:shadow-xl hover:shadow-xl shadow-md;
   }
   .button-theme-light {
-    @apply bg-light-secondary-back;
+    @apply bg-light-secondary-back focus:shadow-xl hover:shadow-xl shadow-md;
   }
-
   .button-style {
-    @apply text-4xl lg:text-5xl font-poppins font-bold p-10 rounded-[1.25rem] max-w-[700px] w-full hover:brightness-110 hover:scale-110 focus:brightness-110 focus:scale-110 focus:outline-none transition ease-in-out;
+    @apply text-4xl lg:text-5xl font-poppins font-bold p-10 rounded-[1.25rem] max-w-[700px] w-full hover:scale-110 focus:scale-110 focus:outline-none transition ease-in-out;
   }
 </style>
