@@ -1,5 +1,5 @@
 <template>
-  <div :class="isLight ? 'container-theme-light' : 'container-theme-dark'" class="transition ease-in-out h-[100vh] w-[100vw] p-4 lg:pt-10 flex flex-col items-center">
+  <div :class="isLight ? 'container-theme-light' : 'container-theme-dark'" class="page transition ease-in-out w-full h-full p-4 lg:pt-10 flex flex-col items-center">
     <header class="w-full max-w-[1024px]">
       <h1 class="transition ease-in-out text-2xl font-poppins font-bold lg:text-3xl">Apprendre le japonais</h1>
       <div class="flex items-center">
@@ -9,7 +9,7 @@
     </header>
     
     <main class="flex flex-col text-center flex-grow justify-evenly items-center mb-20 w-[80%] max-w-[1024px]">
-      <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Kanji</RouterLink>
+      <RouterLink to="/test" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Kanji</RouterLink>
       <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Exressions</RouterLink>
       <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Custom</RouterLink>
     
@@ -17,11 +17,10 @@
     </main>
 
   </div>
-  <RouterView />
 </template>
 
 <script>
-  import { RouterLink, RouterView } from 'vue-router'
+  import { RouterLink } from 'vue-router'
   import { useThemeStore } from '@/stores/theme.js'
   import ThemeToggle from '@/components/ThemeToggle.vue'
 
