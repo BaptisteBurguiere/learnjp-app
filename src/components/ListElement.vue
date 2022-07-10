@@ -1,0 +1,88 @@
+<template lang="">
+  <button v-on:click="selectedSwitch" :class="buttonClassObject" class="transition ease-in-out flex justify-between px-2 py-1 w-full items-center">
+    <h1 class="text-md">{{ title }}</h1>
+    <font-awesome-icon :class="iconClassObject" icon="fa-solid fa-check" class="text-md"/>
+  </button>
+</template>
+
+<script>
+  import { useThemeStore } from '@/stores/theme.js'
+
+  export default {
+    data() {
+      return {
+        themeStore: null,
+        theme: null,
+        isLight: null,
+        isSelected: false
+      }
+    },
+    props: {
+      title: String
+    },
+    mounted() {
+      this.themeStore = useThemeStore()
+    },
+    watch: {
+      'themeStore.theme'(newTheme) {
+        this.theme = newTheme
+        if (this.theme == "light") {
+          this.isLight = true
+        }
+        else {
+          this.isLight = false
+        }
+      }
+    },
+    methods: {
+      selectedSwitch() {
+        if (this.isSelected) {
+          this.isSelected = false
+        }
+        else {
+          this.isSelected = true
+        }
+      }
+    },
+    computed: {
+      iconClassObject() {
+        return {
+          'icon-theme-dark': this.isSelected && !this.isLight,
+          'icon-theme-light': this.isSelected && this.isLight,
+          'icon-theme-dark hidden': !this.isSelected && !this.isLight,
+          'icon-theme-light hidden': !this.isSelected && this.isLight,
+        }
+      },
+      buttonClassObject() {
+        return {
+          'element-theme-dark': !this.isSelected && !this.isLight,
+          'element-theme-light': !this.isSelected && this.isLight,
+          'element-theme-dark selected-theme-dark': this.isSelected && !this.isLight,
+          'element-theme-light selected-theme-light': this.isSelected && this.isLight,
+        }
+      },
+
+    }
+  }
+</script>
+
+<style lang="css">
+  .icon-theme-dark {
+    @apply text-dark-main-font
+  }
+  .icon-theme-light {
+    @apply text-light-main-font
+  }
+  .selected-theme-dark {
+    @apply brightness-110
+  }
+  .selected-theme-light {
+    @apply brightness-[0.98]
+  }
+  .element-theme-dark {
+    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110
+  }
+  .element-theme-light {
+    @apply bg-light-secondary-back hover:brightness-[0.97] focus:brightness-[0.97]
+  }
+</style>

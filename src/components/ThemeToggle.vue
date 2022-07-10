@@ -35,9 +35,11 @@
       switchTheme() {
         if (this.theme == "dark") {
           this.themeStore.theme = "light"
+          localStorage.theme = "light"
         }
          else {
           this.themeStore.theme = "dark"
+          localStorage.theme = "dark"
          }
       }
     },

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TestView from '../views/TestView.vue'
+import KanjiView from '../views/KanjiView.vue'
 import 'animate.css'
 
 const router = createRouter({
@@ -12,6 +13,16 @@ const router = createRouter({
       component: HomeView,
       meta: {
         enterClass: 'animate__animated animate__slideInRight animate__faster',
+        leaveClass: '',
+        mode: 'in-out'
+      }
+    },
+    {
+      path: '/kanji',
+      name: 'kanji',
+      component: KanjiView,
+      meta: {
+        enterClass: 'animate__animated animate__slideInUp animate__faster',
         leaveClass: '',
         mode: 'in-out'
       }
