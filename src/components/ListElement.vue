@@ -1,5 +1,6 @@
 <template lang="">
-  <button v-on:click="selectedSwitch" :class="buttonClassObject" class="transition ease-in-out flex justify-between px-2 py-1 w-full items-center">
+  <div :class="isLight ? 'divider-theme-light' : 'divider-theme-dark'" class="h-[0.0625rem]"/>
+  <button v-on:click="selectedSwitch" :class="buttonClassObject" class="transition ease-in-out flex justify-between pl-2 pr-3 py-1 w-full items-center">
     <h1 class="text-md">{{ title }}</h1>
     <font-awesome-icon :class="iconClassObject" icon="fa-solid fa-check" class="text-md"/>
   </button>
@@ -18,7 +19,8 @@
       }
     },
     props: {
-      title: String
+      title: String,
+      isAll: Boolean
     },
     mounted() {
       this.themeStore = useThemeStore()
@@ -31,6 +33,14 @@
         }
         else {
           this.isLight = false
+        }
+      },
+      'isAll'(newIsAll) {
+        if (this.isAll == true) {
+          this.isSelected = true
+        }
+        else {
+          this.isSelected = false
         }
       }
     },
@@ -84,5 +94,11 @@
   }
   .element-theme-light {
     @apply bg-light-secondary-back hover:brightness-[0.97] focus:brightness-[0.97]
+  }
+  .divider-theme-dark {
+    @apply bg-dark-back
+  }
+  .divider-theme-light {
+    @apply bg-light-back
   }
 </style>

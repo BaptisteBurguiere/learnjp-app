@@ -15,9 +15,11 @@
           <button v-on:click="allSwitch" :class="allClassObject" class="focus:outline-none transition ease-in-out border px-3 py-1 font-poppins text-xl font-normal lg:text-2xl rounded-full">Tout</button>
         </div>
         
-        <div v-for="categorie in categories" class="mb-5 w-full" id="elementsContainer">
-          <div :class="isLight ? 'divider-theme-light' : 'divider-theme-dark'" class="h-[0.0625rem] mt-2"/>
-          <ListElement v-bind:title="categorie"/>
+        <div v-if="isLoading" class="w-full h-[70%] flex items-center justify-center">
+          <font-awesome-icon :class="isLight ? 'icon-theme-light' : 'icon-theme-dark'" icon="fa-solid fa-spinner" class="text-4xl animate-spin"/>
+        </div>
+        <div v-else class="mb-5 w-full overflow-auto mt-3">
+          <ListElement v-for="categorie in categories" v-bind:title="categorie" :isAll="isAll"/>
         </div>
       </div>
       
@@ -36,7 +38,8 @@
           theme: null,
           isLight: null,
           categories: [],
-          isAll: false
+          isAll: false,
+          isLoading: true
         }
       },
       mounted() {
@@ -61,6 +64,7 @@
           const NOTION_VERSION = import.meta.env.VITE_NOTION_VERSION
           const URL = "https://learnjp-api.bburguiere.workers.dev/getKanjiDB"
 
+          this.isLoading = true
           axios.get(URL, {
             headers:  {
               "Notion-Version": NOTION_VERSION,
@@ -71,6 +75,7 @@
             for (var i in categories_obj){
               this.categories.push(categories_obj[i].name)
             }
+            this.isLoading = false
           })
 
         },
@@ -140,15 +145,9 @@
     @apply bg-light-accent border-light-accent
   }
   .isNotAll-theme-dark {
-    @apply border-dark-main-font
+    @apply border-dark-main-font hover:brightness-110 focus:brightness-110 bg-dark-secondary-back
   }
   .isNotAll-theme-light {
-    @apply border-light-main-font
-  }
-  .divider-theme-dark {
-    @apply bg-dark-back
-  }
-  .divider-theme-light {
-    @apply bg-light-back
+    @apply border-light-main-font hover:brightness-[0.97] focus:brightness-[0.97] bg-light-secondary-back
   }
 </style>
