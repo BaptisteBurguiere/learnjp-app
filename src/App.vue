@@ -1,5 +1,5 @@
 <template>
-  <div :class="isLight ? 'app-theme-light' : 'app-theme-dark'" class="relative h-[100vh] w-[100vw]">
+  <div :class="isLight ? 'app-theme-light' : 'app-theme-dark'" class="relative h-[100vh] w-[100vw] overflow-hidden">
     <router-view v-slot="{ Component, route }">
       <transition :mode="route.meta.mode" :enter-active-class="route.meta.enterClass" :leave-active-class="route.meta.leaveClass">
         <component :is="Component" />

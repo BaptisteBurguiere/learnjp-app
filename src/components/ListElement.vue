@@ -1,6 +1,6 @@
 <template lang="">
-  <div :class="isLight ? 'divider-theme-light' : 'divider-theme-dark'" class="h-[0.0625rem]"/>
-  <button v-on:click="selectedSwitch" :class="buttonClassObject" class="transition ease-in-out flex justify-between pl-2 pr-3 py-1 w-full items-center">
+  <div :class="isLight ? 'divider-theme-light' : 'divider-theme-dark'" class="h-[1px]"/>
+  <button v-on:click="selectedSwitch" :class="buttonClassObject" class="transition ease-in-out flex justify-between pl-2 pr-3 py-2 w-full items-center">
     <h1 class="text-md">{{ title }}</h1>
     <font-awesome-icon :class="iconClassObject" icon="fa-solid fa-check" class="text-md"/>
   </button>
@@ -42,6 +42,7 @@
         else {
           this.isSelected = false
         }
+        this.$emit('isSelected', [this.title, this.isSelected])
       }
     },
     methods: {
@@ -52,6 +53,7 @@
         else {
           this.isSelected = true
         }
+        this.$emit('isSelected', [this.title, this.isSelected])
       }
     },
     computed: {
@@ -72,7 +74,10 @@
         }
       },
 
-    }
+    },
+    emits: [
+      "isSelected"
+    ]
   }
 </script>
 

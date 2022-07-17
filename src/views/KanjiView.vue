@@ -9,20 +9,39 @@
     </header>
 
     <main class="flex flex-col text-center flex-grow justify-evenly items-center mb-14 w-[80%] max-w-[1024px]">
-      <div :class="isLight ? 'card-theme-light' : 'card-theme-dark'" class="card-style">
+      <div :class="isLight ? 'card-theme-light' : 'card-theme-dark'" class="card-style h-[35vh]">
         <div class="flex justify-between items-center w-full pt-3 pl-4 pr-4">
           <h1 class="transition ease-in-out text-2xl font-poppins font-bold lg:text-3xl">Catégories</h1>
           <button v-on:click="allSwitch" :class="allClassObject" class="focus:outline-none transition ease-in-out border px-3 py-1 font-poppins text-xl font-normal lg:text-2xl rounded-full">Tout</button>
         </div>
         
-        <div v-if="isLoading" class="w-full h-[70%] flex items-center justify-center">
+        <div v-if="isLoading" class="w-full flex-grow flex items-center justify-center">
           <font-awesome-icon :class="isLight ? 'icon-theme-light' : 'icon-theme-dark'" icon="fa-solid fa-spinner" class="text-4xl animate-spin"/>
         </div>
-        <div v-else class="mb-5 w-full overflow-auto mt-3">
-          <ListElement v-for="categorie in categories" v-bind:title="categorie" :isAll="isAll"/>
+        <div v-else class="w-full overflow-auto mt-3 rounded-b-[1.25rem]">
+          <ListElement v-for="categorie in categories" v-bind:title="categorie" :isAll="isAll" @isSelected="updateSelectedItems"/>
         </div>
       </div>
       
+      <div :class="isLight ? 'card-theme-light' : 'card-theme-dark'" class="card-style h-[20%]">
+        <h1 class="transition ease-in-out text-2xl font-poppins font-bold lg:text-3xl ml-4 mt-3 mb-2">Modes</h1>
+        <div :class="isLight ? 'divider-theme-light' : 'divider-theme-dark'" class="h-[1px] w-full mb-[1px]"/>
+        <div class="flex w-full h-full justify-center items-center">
+          <button v-on:click="modeKanToRomaSwitch" :class="modeKanToRomaClassObject" class="rounded-bl-[1.25rem] transition ease-in-out flex items-center justify-evenly flex-grow h-full">
+            <p class="font-notojp text-2xl">火</p>
+            <font-awesome-icon icon="fa-solid fa-arrow-right-long" class="text-2xl"/>
+            <p class="font-poppins text-2xl font-bold">hi</p>
+          </button>
+          <div :class="isLight ? 'divider-theme-light' : 'divider-theme-dark'" class="w-[1px] h-full"/>
+          <button v-on:click="modeRomaToKanSwitch" :class="modeRomaToKanClassObject" class="rounded-br-[1.25rem] transition ease-in-out flex items-center justify-evenly flex-grow h-full ">
+            <p class="font-poppins text-2xl font-bold">hi</p>
+            <font-awesome-icon icon="fa-solid fa-arrow-right-long" class="text-2xl"/>
+            <p class="font-notojp text-2xl">火</p>
+          </button>
+        </div>
+      </div>
+
+      <router-link to="/kanji" :class="startClassObject">Commencer</router-link>
     </main>
   </div>
 </template>
@@ -39,7 +58,11 @@
           isLight: null,
           categories: [],
           isAll: false,
-          isLoading: true
+          isLoading: true,
+          isModeRomaToKan: false,
+          isModeKanToRoma: false,
+          selectedItems: [],
+          isReady: false
         }
       },
       mounted() {
@@ -87,6 +110,48 @@
           else {
             this.isAll = true
           }
+        },
+
+        modeRomaToKanSwitch() {
+          if (this.isModeRomaToKan) {
+            this.isModeRomaToKan = false
+          }
+          else {
+            this.isModeRomaToKan = true
+          }
+          this.isReadyCheck()
+        },
+        modeKanToRomaSwitch() {
+          if (this.isModeKanToRoma) {
+            this.isModeKanToRoma = false
+          }
+          else {
+            this.isModeKanToRoma = true
+          }
+          this.isReadyCheck()
+        },
+
+        updateSelectedItems(itemDatas) {
+          if (itemDatas[1] == true) {
+            if (this.selectedItems.indexOf(itemDatas[0]) == -1) {
+              this.selectedItems.push(itemDatas[0])
+            }
+          }
+          else {
+            if (this.selectedItems.indexOf(itemDatas[0] != -1)) {
+              this.selectedItems.splice(this.selectedItems.indexOf(itemDatas[0]), 1)
+            }
+          }
+          this.isReadyCheck()
+        },
+
+        isReadyCheck() {
+          if (this.selectedItems.length > 0 && (this.isModeKanToRoma == true || this.isModeRomaToKan == true)) {
+            this.isReady = true
+          }
+          else {
+            this.isReady = false
+          }
         }
       },
       components: {
@@ -99,6 +164,30 @@
             'isAll-theme-light': this.isAll && this.isLight,
             'isNotAll-theme-dark': !this.isAll && !this.isLight,
             'isNotAll-theme-light': !this.isAll && this.isLight,
+          }
+        },
+        modeRomaToKanClassObject() {
+          return {
+            'isMode-theme-dark': this.isModeRomaToKan && !this.isLight,
+            'isMode-theme-light': this.isModeRomaToKan && this.isLight,
+            'isNotMode-theme-dark': !this.isModeRomaToKan && !this.isLight,
+            'isNotMode-theme-light': !this.isModeRomaToKan && this.isLight,
+          }
+        },
+        modeKanToRomaClassObject() {
+          return {
+            'isMode-theme-dark': this.isModeKanToRoma && !this.isLight,
+            'isMode-theme-light': this.isModeKanToRoma && this.isLight,
+            'isNotMode-theme-dark': !this.isModeKanToRoma && !this.isLight,
+            'isNotMode-theme-light': !this.isModeKanToRoma && this.isLight,
+          }
+        },
+        startClassObject() {
+          return {
+            'isNotReady-startButton-style isNotReady-startButton-theme-dark': !this.isReady && !this.isLight,
+            'isReady-startButton-style button-theme-dark': this.isReady && !this.isLight,
+            'isNotReady-startButton-style isNotReady-startButton-theme-light': !this.isReady && this.isLight,
+            'isReady-startButton-style button-theme-light': this.isReady && this.isLight,
           }
         }
       }
@@ -136,18 +225,48 @@
     @apply bg-light-secondary-back;
   }
   .card-style {
-    @apply flex flex-col items-start shadow-md font-poppins rounded-[1.25rem] max-w-[700px] w-full transition ease-in-out h-[40%];
+    @apply flex flex-col items-start shadow-md font-poppins rounded-[1.25rem] max-w-[700px] w-full transition ease-in-out;
   }
   .isAll-theme-dark {
     @apply bg-dark-accent border-dark-accent
   }
   .isAll-theme-light {
-    @apply bg-light-accent border-light-accent
+    @apply bg-light-accent border-light-accent text-light-secondary-back
   }
   .isNotAll-theme-dark {
     @apply border-dark-main-font hover:brightness-110 focus:brightness-110 bg-dark-secondary-back
   }
   .isNotAll-theme-light {
     @apply border-light-main-font hover:brightness-[0.97] focus:brightness-[0.97] bg-light-secondary-back
+  }
+  .divider-theme-dark {
+    @apply bg-dark-back
+  }
+  .divider-theme-light {
+    @apply bg-light-back
+  }
+  .isMode-theme-dark {
+    @apply bg-dark-accent
+  }
+  .isMode-theme-light {
+    @apply bg-light-accent text-light-secondary-back
+  }
+  .isNotMode-theme-dark {
+    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110
+  }
+  .isNotMode-theme-light {
+    @apply bg-light-secondary-back hover:brightness-[0.97] focus:brightness-[0.97]
+  }
+  .isReady-startButton-style {
+    @apply text-2xl lg:text-3xl font-poppins font-bold py-5 px-7 rounded-full hover:scale-110 focus:scale-110 focus:outline-none transition ease-in-out
+  }
+  .isNotReady-startButton-style {
+    @apply text-2xl lg:text-3xl font-poppins font-bold py-5 px-7 rounded-full focus:outline-none transition ease-in-out scale-75 cursor-not-allowed
+  }
+  .isNotReady-startButton-theme-dark {
+    @apply bg-dark-secondary-back brightness-110 opacity-40
+  }
+  .isNotReady-startButton-theme-light {
+    @apply bg-light-secondary-back brightness-90 opacity-70
   }
 </style>

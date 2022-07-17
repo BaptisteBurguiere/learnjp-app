@@ -12,9 +12,9 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: {
-        enterClass: 'animate__animated animate__slideInRight animate__faster',
-        leaveClass: '',
-        mode: 'in-out'
+        enterClass: 'animate__animated animate__slideInLeft animate__faster',
+        leaveClass: 'animate__animated animate__slideOutRight animate__slow',
+        mode: 'default'
       }
     },
     {
@@ -22,9 +22,9 @@ const router = createRouter({
       name: 'kanji',
       component: KanjiView,
       meta: {
-        enterClass: 'animate__animated animate__slideInUp animate__faster',
-        leaveClass: '',
-        mode: 'in-out'
+        enterClass: 'animate__animated animate__slideInRight animate__faster',
+        leaveClass: 'animate__animated animate__slideOutLeft animate__slow',
+        mode: 'default'
       }
     },
     {
