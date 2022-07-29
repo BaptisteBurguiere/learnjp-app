@@ -10,8 +10,8 @@
     
     <main class="flex flex-col text-center flex-grow justify-evenly items-center mb-14 w-[80%] max-w-[1024px]">
       <RouterLink to="/kanji" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Kanji</RouterLink>
-      <RouterLink to="/test" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Expressions</RouterLink>
-      <RouterLink to="/" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Custom</RouterLink>
+      <RouterLink to="/expression" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Expressions</RouterLink>
+      <RouterLink to="/test" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="button-style">Custom</RouterLink>
     
       <ThemeToggle />
     </main>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TestView from '../views/TestView.vue'
 import KanjiView from '../views/KanjiView.vue'
+import ExpressionView from '../views/ExpressionView.vue'
 import 'animate.css'
 
 const router = createRouter({
@@ -21,6 +22,16 @@ const router = createRouter({
       path: '/kanji',
       name: 'kanji',
       component: KanjiView,
+      meta: {
+        enterClass: 'animate__animated animate__slideInRight animate__faster',
+        leaveClass: 'animate__animated animate__slideOutLeft animate__slow',
+        mode: 'default'
+      }
+    },
+    {
+      path: '/expression',
+      name: 'expression',
+      component: ExpressionView,
       meta: {
         enterClass: 'animate__animated animate__slideInRight animate__faster',
         leaveClass: 'animate__animated animate__slideOutLeft animate__slow',
