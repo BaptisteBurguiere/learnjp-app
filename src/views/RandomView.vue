@@ -11,7 +11,7 @@
           <div :class="isLight ? 'line-theme-light' : 'line-theme-dark'" class="transition ease-in-out h-[0.125rem] flex-grow"/>
         </header>
 
-        <main class="flex flex-col text-center flex-grow justify-evenly items-center mb-14 w-[80%] max-w-[1024px]">
+        <main class="flex flex-col text-center flex-grow justify-evenly items-center w-[80%] max-w-[1024px]">
           
           <div :class="isLight ? 'card-theme-light' : 'card-theme-dark'" class="card-style h-[35%]">
             <h1 class="text-2xl font-poppins font-bold lg:text-3xl ml-4 mt-3 mb-5 underline decoration-dark-accent underline-offset-2">Kanji</h1>
@@ -92,7 +92,7 @@
             </div>
           </header>
 
-          <main class="flex flex-col text-center flex-grow justify-start items-center mb-14 w-[95%] max-w-[1024px] mt-7">
+          <main class="flex flex-col text-center flex-grow justify-start items-center w-[95%] max-w-[1024px] mt-7">
             <button v-if="currentElement.type == 'kanji' && currentElement.mode == 'kanToRoma'" v-on:click="showAnswer" :class="cardClassObject" class="flash-card-style p-2 mb-4">
               <div class="flex items-center h-1/2">
                 <h1 class="font-notojp text-9xl">{{ currentElement.kanji }}</h1>

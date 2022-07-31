@@ -11,7 +11,7 @@
           <div :class="isLight ? 'line-theme-light' : 'line-theme-dark'" class="transition ease-in-out h-[0.125rem] flex-grow"/>
         </header>
 
-        <main class="flex flex-col text-center flex-grow justify-evenly items-center mb-14 w-[80%] max-w-[1024px]">
+        <main class="flex flex-col text-center flex-grow justify-evenly items-center w-[80%] max-w-[1024px]">
           <div :class="isLight ? 'card-theme-light' : 'card-theme-dark'" class="card-style h-[35vh]">
             <div class="flex justify-between items-center w-full pt-3 pl-4 pr-4">
               <h1 class="transition ease-in-out text-2xl font-poppins font-bold lg:text-3xl">Catégories</h1>
@@ -65,7 +65,7 @@
             </div>
           </header>
 
-          <main class="flex flex-col text-center flex-grow justify-start items-center mb-14 w-[95%] max-w-[1024px] mt-7">
+          <main class="flex flex-col text-center flex-grow justify-start items-center w-[95%] max-w-[1024px] mt-7">
             <button v-if="currentExp.mode == 'jpToFr'" v-on:click="showAnswer" :class="cardClassObject" class="flash-card-style p-2 mb-4">
               <div class="flex items-center h-1/2">
                 <h1 class="font-notojp text-2xl">{{ currentExp.expression }}</h1>
