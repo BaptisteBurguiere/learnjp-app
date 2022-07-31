@@ -82,12 +82,6 @@
 </script>
 
 <style lang="css">
-  .icon-theme-dark {
-    @apply text-dark-main-font
-  }
-  .icon-theme-light {
-    @apply text-light-main-font
-  }
   .selected-theme-dark {
     @apply brightness-110
   }

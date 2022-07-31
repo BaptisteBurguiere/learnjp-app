@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import TestView from '../views/TestView.vue'
 import KanjiView from '../views/KanjiView.vue'
 import ExpressionView from '../views/ExpressionView.vue'
+import RandomView from '../views/RandomView.vue'
 import 'animate.css'
 
 const router = createRouter({
@@ -39,13 +39,13 @@ const router = createRouter({
       }
     },
     {
-      path: '/test',
-      name: 'test',
-      component: TestView,
+      path: '/random',
+      name: 'random',
+      component: RandomView,
       meta: {
-        enterClass: 'animate__animated animate__slideInUp animate__faster',
-        leaveClass: '',
-        mode: 'in-out'
+        enterClass: 'animate__animated animate__slideInRight animate__faster',
+        leaveClass: 'animate__animated animate__slideOutLeft animate__slow',
+        mode: 'default'
       }
     },
   ]

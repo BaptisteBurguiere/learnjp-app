@@ -66,7 +66,7 @@
           </header>
 
           <main class="flex flex-col text-center flex-grow justify-start items-center mb-14 w-[95%] max-w-[1024px] mt-7">
-            <button v-if="currentKanji.mode == 'kanToRoma'" v-on:click="showAnswer" :class="cardClassObject" class="kanji-card-style p-2 mb-4">
+            <button v-if="currentKanji.mode == 'kanToRoma'" v-on:click="showAnswer" :class="cardClassObject" class="flash-card-style p-2 mb-4">
               <div class="flex items-center h-1/2">
                 <h1 class="font-notojp text-9xl">{{ currentKanji.kanji }}</h1>
               </div>
@@ -82,7 +82,7 @@
                 </div>
               </div>
             </button>
-            <button v-else v-on:click="showAnswer" :class="cardClassObject" class="kanji-card-style p-2 mb-4">
+            <button v-else v-on:click="showAnswer" :class="cardClassObject" class="flash-card-style p-2 mb-4">
               <div class="flex items-center h-1/2">
                 <div class="flex items-center">
                   <h1 class="font-notojp text-5xl">{{ currentKanji.lectureJp }}</h1>
@@ -376,24 +376,6 @@
   }
 </script>
 <style lang="css">
-  .container-theme-dark {
-    @apply bg-dark-back text-dark-main-font;
-  }
-  .container-theme-light {
-    @apply bg-light-back text-light-main-font;
-  }
-  .line-theme-dark {
-    @apply bg-dark-accent;
-  }
-  .line-theme-light {
-    @apply bg-light-accent;
-  }
-  .button-theme-dark {
-    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110  focus:shadow-xl hover:shadow-xl shadow-md;
-  }
-  .button-theme-light {
-    @apply bg-light-secondary-back focus:shadow-xl hover:shadow-xl shadow-md;
-  }
   .icon-theme-dark {
     @apply text-dark-main-font
   }
@@ -409,7 +391,7 @@
   .card-style {
     @apply flex flex-col items-start shadow-md font-poppins rounded-[1.25rem] max-w-[700px] w-full transition ease-in-out;
   }
-  .kanji-card-style {
+  .flash-card-style {
     @apply flex flex-col justify-center items-center shadow-md font-poppins rounded-[1.25rem] max-w-[700px] w-full;
   }
   .isAll-theme-dark {
@@ -423,12 +405,6 @@
   }
   .isNotAll-theme-light {
     @apply border-light-main-font hover:brightness-[0.97] focus:brightness-[0.97] bg-light-secondary-back
-  }
-  .divider-theme-dark {
-    @apply bg-dark-back
-  }
-  .divider-theme-light {
-    @apply bg-light-back
   }
   .isMode-theme-dark {
     @apply bg-dark-accent

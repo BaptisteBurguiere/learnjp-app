@@ -46,13 +46,6 @@
   }
 </script>
 <style lang="css">
-  .button-theme-dark {
-    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110  focus:shadow-xl hover:shadow-xl shadow-md;
-  }
-  .button-theme-light {
-    @apply bg-light-secondary-back focus:shadow-xl hover:shadow-xl shadow-md;
-  }
-
   .fade-enter-active,
   .fade-leave-active {
     transition: opacity 150ms ease-in-out;

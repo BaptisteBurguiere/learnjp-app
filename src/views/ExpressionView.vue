@@ -66,7 +66,7 @@
           </header>
 
           <main class="flex flex-col text-center flex-grow justify-start items-center mb-14 w-[95%] max-w-[1024px] mt-7">
-            <button v-if="currentExp.mode == 'jpToFr'" v-on:click="showAnswer" :class="cardClassObject" class="exp-card-style p-2 mb-4">
+            <button v-if="currentExp.mode == 'jpToFr'" v-on:click="showAnswer" :class="cardClassObject" class="flash-card-style p-2 mb-4">
               <div class="flex items-center h-1/2">
                 <h1 class="font-notojp text-2xl">{{ currentExp.expression }}</h1>
               </div>
@@ -78,7 +78,7 @@
                 </div>
               </div>
             </button>
-            <button v-else v-on:click="showAnswer" :class="cardClassObject" class="exp-card-style p-2 mb-4">
+            <button v-else v-on:click="showAnswer" :class="cardClassObject" class="flash-card-style p-2 mb-4">
               <div class="flex items-center h-1/2">
                 <h1 class="text-2xl">{{ currentExp.traduction }}</h1>
               </div>
@@ -376,82 +376,5 @@
   }
 </script>
 <style lang="css">
-  .container-theme-dark {
-    @apply bg-dark-back text-dark-main-font;
-  }
-  .container-theme-light {
-    @apply bg-light-back text-light-main-font;
-  }
-  .line-theme-dark {
-    @apply bg-dark-accent;
-  }
-  .line-theme-light {
-    @apply bg-light-accent;
-  }
-  .button-theme-dark {
-    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110  focus:shadow-xl hover:shadow-xl shadow-md;
-  }
-  .button-theme-light {
-    @apply bg-light-secondary-back focus:shadow-xl hover:shadow-xl shadow-md;
-  }
-  .icon-theme-dark {
-    @apply text-dark-main-font
-  }
-  .icon-theme-light {
-    @apply text-light-main-font
-  }
-  .card-theme-dark {
-    @apply bg-dark-secondary-back;
-  }
-  .card-theme-light {
-    @apply bg-light-secondary-back;
-  }
-  .card-style {
-    @apply flex flex-col items-start shadow-md font-poppins rounded-[1.25rem] max-w-[700px] w-full transition ease-in-out;
-  }
-  .exp-card-style {
-    @apply flex flex-col justify-center items-center shadow-md font-poppins rounded-[1.25rem] max-w-[700px] w-full;
-  }
-  .isAll-theme-dark {
-    @apply bg-dark-accent border-dark-accent
-  }
-  .isAll-theme-light {
-    @apply bg-light-accent border-light-accent text-light-secondary-back
-  }
-  .isNotAll-theme-dark {
-    @apply border-dark-main-font hover:brightness-110 focus:brightness-110 bg-dark-secondary-back
-  }
-  .isNotAll-theme-light {
-    @apply border-light-main-font hover:brightness-[0.97] focus:brightness-[0.97] bg-light-secondary-back
-  }
-  .divider-theme-dark {
-    @apply bg-dark-back
-  }
-  .divider-theme-light {
-    @apply bg-light-back
-  }
-  .isMode-theme-dark {
-    @apply bg-dark-accent
-  }
-  .isMode-theme-light {
-    @apply bg-light-accent text-light-secondary-back
-  }
-  .isNotMode-theme-dark {
-    @apply bg-dark-secondary-back hover:brightness-110 focus:brightness-110
-  }
-  .isNotMode-theme-light {
-    @apply bg-light-secondary-back hover:brightness-[0.97] focus:brightness-[0.97]
-  }
-  .isReady-startButton-style {
-    @apply text-2xl lg:text-3xl font-poppins font-bold py-5 px-7 rounded-full hover:scale-110 focus:scale-110 focus:outline-none transition ease-in-out
-  }
-  .isNotReady-startButton-style {
-    @apply text-2xl lg:text-3xl font-poppins font-bold py-5 px-7 rounded-full focus:outline-none transition ease-in-out scale-75 cursor-not-allowed
-  }
-  .isNotReady-startButton-theme-dark {
-    @apply bg-dark-secondary-back brightness-110 opacity-40
-  }
-  .isNotReady-startButton-theme-light {
-    @apply bg-light-secondary-back brightness-90 opacity-70
-  }
+
 </style>
