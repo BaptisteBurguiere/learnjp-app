@@ -5,3 +5,8 @@ I started to learn japanese and tried to find mobile apps to help me in learning
 ## Warning
 
 As I linked this app to my Notion’s database, wich is very specific, you can’t just add your own. This app was desinged for my needs and adapt it to everyone is not planned.
+
+## Link
+
+You can check out my app here: https://learnjp-app.netlify.app/
+The app is only available in french. For a better experience, you can download the app as it's a Progressive Web Application
