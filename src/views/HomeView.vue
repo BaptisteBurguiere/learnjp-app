@@ -47,7 +47,7 @@
       }
     },
     components: {
-      ThemeToggle
+      ThemeToggle,
     }
   }
 </script>
@@ -72,6 +72,6 @@
     @apply bg-light-secondary-back focus:shadow-xl hover:shadow-xl shadow-md;
   }
   .button-style {
-    @apply text-4xl lg:text-5xl font-poppins font-bold p-10 rounded-[1.25rem] max-w-[700px] w-full hover:scale-110 focus:scale-110 focus:outline-none transition ease-in-out;
+    @apply text-4xl lg:text-5xl font-poppins font-bold py-10 rounded-[1.25rem] max-w-[700px] w-full hover:scale-110 focus:scale-110 focus:outline-none transition ease-in-out;
   }
 </style>

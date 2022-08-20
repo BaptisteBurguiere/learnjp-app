@@ -73,7 +73,7 @@
               <div :class="isShowAnswer ? 'h-1/2 opacity-100 transition-all ease-in-out' : 'h-0 opacity-0'" class="flex flex-col justify-start">
                 <div class="flex items-center mb-4">
                   <h2 class="font-notojp text-3xl">{{ currentKanji.lectureJp }}</h2>
-                  <div :class="isLight ? 'line-theme-light' : 'line-theme-dark'" class="h-2 w-2 rounded-full mx-4"/>
+                  <div v-if="currentKanji.lectureJp != '' && currentKanji.lectureSino != ''" :class="isLight ? 'line-theme-light' : 'line-theme-dark'" class="h-2 w-2 rounded-full mx-4"/>
                   <h2 class="font font-notojp text-3xl">{{ currentKanji.lectureSino }}</h2>
                 </div>
                 <h2 class="text-xl">{{ currentKanji.traduction }}</h2>
@@ -86,7 +86,7 @@
               <div class="flex items-center h-1/2">
                 <div class="flex items-center">
                   <h1 class="font-notojp text-5xl">{{ currentKanji.lectureJp }}</h1>
-                  <div :class="isLight ? 'line-theme-light' : 'line-theme-dark'" class="h-3 w-3 rounded-full mx-6"/>
+                  <div  v-if="currentKanji.lectureJp != '' && currentKanji.lectureSino != ''" :class="isLight ? 'line-theme-light' : 'line-theme-dark'" class="h-3 w-3 rounded-full mx-6"/>
                   <h1 class="font font-notojp text-5xl">{{ currentKanji.lectureSino }}</h1>
                 </div>
               </div>
@@ -177,8 +177,18 @@
                 var kanji = {}
                 kanji.kanji = kanji_obj[i].properties["Kanji"].rich_text[0].plain_text
                 kanji.traduction = kanji_obj[i].properties["Traduction"].title[0].plain_text
-                kanji.lectureJp = kanji_obj[i].properties["Lecture purement japonaise"].rich_text[0].plain_text
-                kanji.lectureSino = kanji_obj[i].properties["Lecture sino-japonaise"].rich_text[0].plain_text
+                if (kanji_obj[i].properties["Lecture purement japonaise"].rich_text.length > 0) {
+                  kanji.lectureJp = kanji_obj[i].properties["Lecture purement japonaise"].rich_text[0].plain_text
+                }
+                else {
+                  kanji.lectureJp = ""
+                }
+                if (kanji_obj[i].properties["Lecture sino-japonaise"].rich_text.length > 0) {
+                  kanji.lectureSino = kanji_obj[i].properties["Lecture sino-japonaise"].rich_text[0].plain_text
+                }
+                else {
+                  kanji.lectureSino = ""
+                }
                 if (kanji_obj[i].properties["Commentaire"].rich_text.length > 0) {
                   kanji.commentaire = kanji_obj[i].properties["Commentaire"].rich_text[0].plain_text
                 }

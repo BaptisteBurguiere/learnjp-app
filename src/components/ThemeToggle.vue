@@ -2,12 +2,13 @@
   <button v-on:click="switchTheme" :class="isLight ? 'button-theme-light' : 'button-theme-dark'" class="relative w-12 h-12 rounded-full hover:scale-110 focus:scale-110 focus:outline-none transition ease-in-out">
     <transition name="fade" appear>
       <font-awesome-icon v-if="isLight" icon="fa-solid fa-moon" class="text-light-main-font w-[70%] h-[70%] top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] absolute"/>
-      <font-awesome-icon v-else icon="fa-solid fa-sun" class="text-dark-main-font w-[60%] h-[60%] top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] absolute"/>
+      <IconSun v-else class="fill-dark-main-font stroke-dark-main-font w-[70%] h-[70%] top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] absolute" />
     </transition>
   </button>
 </template>
 <script>
   import { useThemeStore } from '@/stores/theme.js'
+  import IconSun from '@/assets/icons/icon-sun.vue'
 
   export default {
     data() {
@@ -43,8 +44,12 @@
          }
       }
     },
+    components: {
+      IconSun,
+    }
   }
 </script>
+
 <style lang="css">
   .fade-enter-active,
   .fade-leave-active {
